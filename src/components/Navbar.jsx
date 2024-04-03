@@ -1,9 +1,18 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../hooks'
+import Button from '@mui/material/Button'
+import { useDispatch } from 'react-redux'
+import { openDrawer } from '../state/drawer/drawerSlice'
 
 function Navbar() {
   const { isAuth, authUser } = useAuth()
+  const dispatch = useDispatch()
+  const location = useLocation();
+
+  const showDrawer = () => {
+    dispatch(openDrawer())
+  }
 
   return (
     <nav className="navbar navbar-light">
@@ -52,6 +61,21 @@ function Navbar() {
                 </NavLink>
               </li>
             </>
+          )}
+          {location.pathname === '/' && (
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: '#5CB85B',
+                marginLeft: 3,
+                '&:hover': {
+                  backgroundColor: '#76ba75',
+                },
+              }}
+              onClick={showDrawer}
+            >
+              Latest Article
+            </Button>
           )}
         </ul>
       </div>

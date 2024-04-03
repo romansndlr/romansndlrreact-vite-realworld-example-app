@@ -277,6 +277,8 @@ function makeServer({ environment = 'development' } = {}) {
 
         return article
       })
+
+      this.passthrough('http://localhost:5000/**')
     },
   })
 }
