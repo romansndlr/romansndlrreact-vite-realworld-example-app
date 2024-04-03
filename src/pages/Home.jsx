@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import { ArticleList, PopularTags } from '../components'
 import { useAuth } from '../hooks'
+import ArticleDrawer from '../components/ArticleDrawer'
 
 const initialFilters = { tag: '', offset: null, feed: false }
 
@@ -75,6 +76,7 @@ function Home() {
             <PopularTags onTagClick={onTagClick} />
           </div>
         </div>
+        <ArticleDrawer />
       </div>
     </div>
   )
